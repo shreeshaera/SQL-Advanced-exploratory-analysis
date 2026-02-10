@@ -25,6 +25,7 @@
 • Proportial analysis
 
 --- These findings are essential in business decisions as it provides KPI's and metrics ---
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
  Inspired from Data with baraa project.
