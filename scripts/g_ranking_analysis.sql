@@ -4,9 +4,9 @@
 Interpretating the customer behaviour by ranking the products and their orders
 ================================================================================
 
-SQL Functions Used:
-    - Window Ranking Functions: RANK, DENSE_RANK, ROW_NUMBER, TOP
-    - GROUP BY, ORDER 
+SQL Functions Used: 
+    - GROUP BY, ORDER, TOP, 
+    - SUM, COUNT, JOINS
 ================================================================================
 */
 
