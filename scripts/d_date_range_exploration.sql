@@ -12,23 +12,25 @@ SQL Functions Used:
 */
 
 --- Extracting the first, last order, and months range ---
-select 
-min(order_date) as First_order,
-max(order_date) as Last_order,
-datediff(month,min(order_date),max(order_date)) as month_difference
-from gold.fact_sales
+SELECT 
+    MIN(order_date) AS First_order,
+    MAX(order_date) AS Last_order,
+    DATEDIFF(MONTH,MIN(order_date),MAX(order_date)) AS month_difference
+FROM gold.fact_sales
 
 --- Finding the total orders per year ---
-select year(order_date) as year, count(*) total_orders
-from gold.fact_sales
-where order_date is not null
-group by year(order_date)
-order by year(order_date) desc
+SELECT
+    YEAR(order_date) AS year,
+    COUNT(*) total_orders
+FROM gold.fact_sales
+WHERE order_date is not null
+GROUP BY YEAR(order_date)
+ORDER BY YEAR(order_date) DESC
 
 --- Finding the age groups ordering the products ---
-select datediff(year,birthdate,getdate()) as age,
-count(*) as total_customers
-from gold.dim_customers 
-group by datediff(year,birthdate,getdate()) 
-order by total_customers desc 
-
+SELECT 
+    DATEDIFF(YEAR,birthdate,GETDATE()) AS age,
+    COUNT(*) AS total_customers
+FROM gold.dim_customers 
+GROUP BY DATEDIFF(YEAR,birthdate,GETDATE()) 
+ORDER BY total_customers DESC 
