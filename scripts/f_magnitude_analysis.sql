@@ -11,51 +11,66 @@ SQL functions used:
 */
 
 --- Retrieving Total customers per country ---
-select country,count(distinct customer_key) as total_customers
-from gold.dim_customers 
-group by country 
-order by total_customers desc
+SELECT 
+    country,
+    COUNT(DISTINCT customer_key) AS total_customers
+FROM gold.dim_customers 
+GROUP BY country 
+ORDER BY total_customers DESC
 
 --- Retrieving Total customers by Gender ---
-select gender,count(gender) total_customers
-from gold.dim_customers
-group by gender
-order by total_customers desc
+SELECT 
+    gender,
+    COUNT(gender) AS total_customers
+FROM gold.dim_customers
+GROUP BY gender
+ORDER BY total_customers DESC
 
 --- Retrieving Total products by Category ---
-select category,count(distinct product_key) total_products
-from gold.dim_products
-group by category
-order by total_products desc
+SELECT 
+    category,
+    COUNT(DISTINCT product_key) AS total_products
+FROM gold.dim_products
+GROUP BY category
+ORDER BY total_products DESC
 
 --- Retrieving Average cost per Category ---
-select category, avg(cost) as average_cost
-from gold.dim_products
-group by category
-order by average_cost desc
+SELECT
+    category,
+    AVG(cost) AS average_cost
+FROM gold.dim_products
+GROUP BY category
+ORDER BY average_cost DESC
 
 --- Retrieving Total revenue per Category ---
-select p.category, sum(f.sales_amount) total_revenue
-from gold.dim_products p
-left join gold.fact_sales f
-on p.product_key = f.product_key
-where p.category is not null
-group by p.category
-order by total_revenue desc
+SELECT 
+    p.category, 
+    SUM(f.sales_amount) AS total_revenue
+FROM gold.dim_products p
+    left join gold.fact_sales f
+    ON p.product_key = f.product_key
+WHERE p.category is not null
+GROUP BY p.category
+ORDER BY total_revenue DESC
 
 --- Retrieving Total sales per Customers ---
-select c.customer_key, c.first_name, c.last_name, 
-sum(f.sales_amount) totalsales
-from gold.fact_sales f
-left join gold.dim_customers c
-on c.customer_key = f.customer_key
-group by c.customer_key, c.first_name, c.last_name
-order by totalsales desc
+SELECT
+    c.customer_key, 
+    c.first_name, 
+    c.last_name, 
+    SUM(f.sales_amount) AS totalsales
+FROM gold.fact_sales f
+    left join gold.dim_customers c
+    ON c.customer_key = f.customer_key
+GROUP BY c.customer_key, c.first_name, c.last_name
+ORDER BY totalsales DESC
 
 --- Total items across Country ---
-select c.country, count(f.quantity) total_items
-from gold.fact_sales f
-left  join gold.dim_customers c
-on c.customer_key = f.customer_key
-group by c.country
-order by total_items desc
+SELECT 
+    c.country,
+    COUNT(f.quantity) AS total_items
+FROM gold.fact_sales f
+    left  join gold.dim_customers c
+    ON c.customer_key = f.customer_key
+GROUP BY c.country
+ORDER BY total_items DESC
