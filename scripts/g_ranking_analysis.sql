@@ -13,7 +13,7 @@ SQL Functions Used:
 --- Extracting Top 5 products in revenue ---
 SELECT TOP 5 
     p.product_name,
-    SUM(f.sales_amount) total_revenue
+    SUM(f.sales_amount)  AS total_revenue
 FROM gold.fact_sales f 
     left join gold.dim_products p
     ON p.product_key = f.product_key
@@ -35,7 +35,7 @@ SELECT TOP 10
     c.customer_key,
     c.first_name, 
     c.last_name, 
-    SUM(f.sales_amount) totalsales
+    SUM(f.sales_amount) AS totalsales
 FROM gold.fact_sales f
     left join gold.dim_customers c
     ON c.customer_key = f.customer_key
@@ -47,7 +47,7 @@ SELECT TOP 3
     c.customer_key, 
     c.first_name,
     c.last_name, 
-    COUNT(DISTINCT f.order_number) totalorders
+    COUNT(DISTINCT f.order_number) AS totalorders
 FROM gold.fact_sales f
     left join gold.dim_customers c
     ON c.customer_key = f.customer_key
