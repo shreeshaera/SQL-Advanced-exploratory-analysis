@@ -21,7 +21,7 @@ Highlights:
 ===============================================================================
 */
 
------ Creating complete customer report -----
+----------------------======== Creating complete product report ========----------------------
 
 ------ Retrieving all the relevant columns for the analysis
 WITH base_info AS
