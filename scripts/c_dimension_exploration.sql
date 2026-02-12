@@ -1,9 +1,11 @@
 /*
 ====================================================================
 				 EXPLORING THE DIMENSIONS TABLE:
+--------------------------------------------------------------------
 	To understand Customer and Product dimensions and relations
 ====================================================================
-FUNCTIONS USED:
+
+SQL FUNCTIONS USED:
  - DISTINCT
  - TOP
  - GROUP BY
