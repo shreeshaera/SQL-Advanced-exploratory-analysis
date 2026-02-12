@@ -1,14 +1,18 @@
 /*
 ===============================================================================
                         CUMULATIVE ANALYSIS
+-------------------------------------------------------------------------------
      To calculate running totals or moving averages for key metrics and
             To track performance over time cumulatively.
 ===============================================================================
 
 SQL Functions Used:
-    - Window Functions: SUM, AVG, OVER
+    - SUM
+    - AVG
+    - OVER
 ===============================================================================
 */
+
 ---- Retrieving total years sales and cumilative growth over time ----
 SELECT *,
 	SUM(total_sales) OVER( ORDER BY order_Date) AS running_total,
