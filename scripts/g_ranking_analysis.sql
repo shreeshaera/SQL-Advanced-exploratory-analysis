@@ -6,6 +6,7 @@ Interpretating the customer behaviour by ranking the products and their orders
 ================================================================================
 
 SQL Functions Used: 
+    - RANK
     - GROUP BY
     - ORDER
     - TOP
@@ -26,14 +27,18 @@ GROUP BY p.product_name
 ORDER BY total_revenue DESC
 
 --- Extracting Worst 5 products in revenue ---
-SELECT TOP 5
-    p.product_name,
-    SUM(f.sales_amount) AS total_revenue
-FROM gold.fact_sales f
-LEFT JOIN gold.dim_products p
-    ON p.product_key = f.product_key
-GROUP BY p.product_name
-ORDER BY total_revenue
+SELECT *
+FROM (
+    SELECT
+        p.product_name,
+        SUM(f.sales_amount) AS total_revenue,
+        RANK() OVER (ORDER BY SUM(f.sales_amount) DESC) AS rank_products
+    FROM gold.fact_sales f
+    LEFT JOIN gold.dim_products p
+        ON p.product_key = f.product_key
+    GROUP BY p.product_name
+) AS ranked_products
+WHERE rank_products <= 5;
 
 --- Extracting Top 10 customers based on their total sales ---
 SELECT TOP 10 
