@@ -2,6 +2,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 • 👩🏻‍💼 This projects demonstrates about the customer behaviour and activity based on their orders, sales etc.
+
 • 📈 It also has the information on products, trends, profits and other analysis. It goes from basic Exploratory analysis to deep advanced level. 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
